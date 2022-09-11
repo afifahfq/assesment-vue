@@ -30,13 +30,20 @@
 }
 
 .card-people {
-    border-radius: 15px;
+    border-radius: 15px white;
 }
 
 .card-img-top {
-    border-top-right-radius: 15px;
-    border-top-left-radius: 15px;
+    border-top-right-radius: 15px white;
+    border-top-left-radius: 15px white;
     /* max-width: 200px; */
+}
+
+.card {
+  margin: 0;
+  flex-flow: row wrap;
+  flex-direction: unset;
+  justify-content: space-around;
 }
 
 .breadcrumb {

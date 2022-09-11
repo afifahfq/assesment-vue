@@ -11,9 +11,9 @@
                   <br />in Your Gadget
                 </h2>
                 <p>Dibuat untuk memenuhi assesment test Fintax.</p>
-                <router-link class="btn btn-lg btn-success" to="/about">
-                  Find out more
-                </router-link>
+                <a class="btn btn-lg btn-success" href="https://www.linkedin.com/in/afifahfq/" target="_blank" rel="noopener">
+                  Visit my linkedin
+                </a>
               </div>
             </div>
           </div>
@@ -23,13 +23,10 @@
         </div>
       </div>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    name: "LandingComp",
-  };
-  </script>
-  
-  <style>
-  </style>
+</template>
+
+<script>
+export default {
+  name: "LandingComp",
+};
+</script>

@@ -1,6 +1,7 @@
 <template>
     <div class="people">
-      <h1>People</h1>
+      <h3>People</h3>
+      <p>Here are some faces which helped develop this website.</p>
       <PeopleCard :people="people" />
     </div>
 </template>
@@ -13,7 +14,7 @@ export default {
   name: "PeopleView",
   components: {
     PeopleCard
-},
+  },
   data() {
     return {
       people: null,
@@ -23,20 +24,19 @@ export default {
   },
   methods: {
   },
-  mounted() {
-    window.addEventListener('load', () => {
-      axios
+  created() {
+    axios
       .get("https://reqres.in/api/users?page=1")
       .then(response => {
         this.people = response.data.data;
-        console.log(this.people);
       })
       .catch(error => {
         console.log(error)
         this.errored = true
       })
       .finally(() => this.loading = false)
-    })
+  },
+  mounted() {
   },
 };
 </script>

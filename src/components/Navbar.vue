@@ -18,14 +18,7 @@
                 <router-link class="nav-link" to="/people">People</router-link>
               </li>
             </b-navbar-nav>
-  
-            <b-navbar-nav class="ml-auto">
-              <li class="nav-item">
-                <router-link class="nav-link" to="/about">
-                  About
-                </router-link>
-              </li>
-            </b-navbar-nav>
+
           </b-collapse>
         </div>
       </b-navbar>

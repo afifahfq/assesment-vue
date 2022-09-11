@@ -28,13 +28,12 @@
 
     <div class="calculator-table">
       <v-client-table :data="history" :columns="header" :options="options"></v-client-table>
-      <div class="btn btn-reset" @click="reset">Reset</div>
+      <div class="btn btn-reset" v-show="!this.history_empty" @click="reset">Reset</div>
     </div>
   </div>
 </template>
 
 <script>
-// import Navbar from '@/components/Navbar.vue';
 import Vue from 'vue';
 import { ClientTable } from "vue-tables-2";
 
@@ -43,7 +42,6 @@ Vue.use(ClientTable);
 export default {
   name: "CalculatorView",
   components: {
-    // Navbar
   },
   data() {
     return {
@@ -54,7 +52,15 @@ export default {
       history: this.getFromStorage(),
       temp: {},
       header: ["1st num", "Operator", "2nd num", "Result"],
-      options: {}
+      options: {},
+      history_empty: null
+    }
+  },
+  created() {
+    if (this.history.length < 1) {
+      this.history_empty = true
+    } else {
+      this.history_empty = false
     }
   },
   methods: {
@@ -117,15 +123,19 @@ export default {
       this.history.push(this.temp);
       this.previous = null;
       this.temp = {};
+      this.history_empty = false;
       
       localStorage.setItem('calculator', JSON.stringify(this.history));
-      console.log(localStorage.getItem('calculator'));
+      console.log(this.history_empty);
     },
     getFromStorage() {
       let check = JSON.parse(localStorage.getItem('calculator'));
       if (check == undefined || check.length < 1) {
         let temp = [];
         localStorage.setItem('calculator', JSON.stringify(temp));
+        this.history_empty = true;
+      } else {
+        this.history_empty = false;
       }
 
       this.history = JSON.parse(localStorage.getItem('calculator'));
@@ -133,8 +143,9 @@ export default {
     },
     reset() {
       this.history = [];
+      this.history_empty = true;
       localStorage.setItem('calculator', JSON.stringify(this.history));
     }
-  }
+  }  
 }
 </script>
